@@ -16,11 +16,13 @@ project(foo
 
 So, the main entry point is inside the `foo/main.c`.
 
+> **_NOTE:_**  Currently, only the `STM32F303RET` is supported.
 
 ## Build
 
 ### Dependencies
 ```bash
+pip3 install prettyc
 sudo apt install \
   libusb-1.0-0-dev \
   cmake-curses-gui \
