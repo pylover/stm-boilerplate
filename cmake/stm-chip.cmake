@@ -1,0 +1,22 @@
+# supported stm32 chips
+list (APPEND STM_CHIP_SUPPORTED 
+  "STM32F303RExx"
+  "STM32F303RDxx"
+)
+
+
+set (STM_CHIP_DEFAULT "STM32F303RExx")
+set (STM_CHIP ${STM_CHIP_DEFAULT} CACHE STRING "STM chip name")
+set_property (CACHE STM_CHIP PROPERTY STRINGS ${STM_CHIP_SUPPORTED})
+
+
+string (TOLOWER ${STM_CHIP} STM_CHIP_LOWER)
+stm_chipfamily (${STM_CHIP} OUTPUT STM_CHIP_FAMILY)
+stm_chipclass (${STM_CHIP} OUTPUT STM_CHIP_CLASS)
+stm_chipclassupper (${STM_CHIP} OUTPUT STM_CHIP_CLASS_UPPER)
+stm_chipcore (${STM_CHIP} OUTPUT STM_CHIP_CORE)
+stm_chipcorename (${STM_CHIP} OUTPUT STM_CHIP_CORENAME)
+stm_chiptype (${STM_CHIP} OUTPUT STM_CHIP_TYPE)
+
+
+add_compile_definitions(${STM_CHIP_CLASS_UPPER})
